@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -50,3 +49,13 @@ gem "omniauth-twitter"
 gem "omniauth-github"
 gem "dotenv-rails"
 gem "bootstrap-sass", "~> 3.0.3.0"
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'quiet_assets'
+end
+
+group :production do
+  gem 'pg'
+end
+
