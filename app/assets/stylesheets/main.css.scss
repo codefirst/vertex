@@ -35,3 +35,21 @@ footer {
 .glyphicon {
   margin-right: 5px;
 }
+
+.task-list {
+  list-style-type: none;
+  padding-left: 0px;
+
+  .task-checkbox {
+    padding-left: 0px;
+  }
+  .task-title {
+    padding-left: 4px;
+  }
+  .task-edit {
+    padding-left: 10px;
+  }
+  .task-delete {
+    padding-left: 4px;
+  }
+}

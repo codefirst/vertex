@@ -49,6 +49,7 @@ gem "omniauth-twitter"
 gem "omniauth-github"
 gem "dotenv-rails"
 gem "bootstrap-sass", "~> 3.0.3.0"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'sqlite3'
