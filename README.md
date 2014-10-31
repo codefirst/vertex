@@ -6,9 +6,34 @@ Weekly review service for GTD
 Setup
 -------------------------------
 
-copy dot.env as .env, and edit it.
+copy dot.env to .env, and edit it.
 
-install libraries and run:
+#### DEVISE\_SECRET\_KEY
+
+Generate secret key
+
+```
+bundle exec rake secret
+```
+
+#### OMNIAUTH\_PROVIDER, OMNIAUTH\_ARGS
+
+For example, omniauth-github needs an initializer as follows:
+```ruby
+Devise.setup do |config|
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
+end
+```
+
+then you should set environment variables as follows:
+```
+OMNIAUTH_PROVIDER=github
+OMNIAUTH_ARGS="['GITHUB_KEY','GITHUB_SECRET']"
+```
+
+See [config/initializers/devise.rb](https://github.com/codefirst/vertex/blob/master/config/initializers/devise.rb)
+
+#### run
 
     $ bundle install --path .bundle
     $ bundle exec rake db:migrate
