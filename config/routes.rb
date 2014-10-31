@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'top#index'
   get 'top/index'
 
+  resources :tasks
+
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do
     get 'sign_in', to: 'authentication#login', as: :new_user_session
