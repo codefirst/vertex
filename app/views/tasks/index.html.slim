@@ -5,8 +5,8 @@ table
   ul.task-list.table-sortable
     - @tasks.each do |task|
       li.item(data = { model_name: task.class.name.underscore, update_url: task_sort_path(task) })
-        span.task-checkbox= check_box_tag "tasks[#{task.id}]", task.done, task.done
-        span.task-title= best_in_place task, :title
+        span.task-done= check_box_tag "tasks[#{task.id}]", task.id, task.done, class: 'task-checkbox'
+        span.task-title= best_in_place task, :title, place_holder: 'Task'
         span.task-delete= link_to fa_icon('trash'), task, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
