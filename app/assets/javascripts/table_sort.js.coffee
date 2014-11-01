@@ -13,3 +13,6 @@ $ ->
         url: item_data.updateUrl
         dataType: 'json'
         data: params
+    stop: (e, ui) ->
+      ui.item.effect('highlight')
+

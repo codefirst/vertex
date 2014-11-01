@@ -53,3 +53,9 @@ footer {
     padding-left: 4px;
   }
 }
+
+.table-sortable {
+  li.item {
+    cursor: row-resize;
+  }
+}
