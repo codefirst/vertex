@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  respond_to :html, :xml
+  respond_to :html, :json
 
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
