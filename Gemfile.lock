@@ -65,6 +65,8 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.2)
+      railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
     mail (2.6.1)
@@ -121,6 +123,8 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    ranked-model (0.4.0)
+      activerecord (>= 3.1.12)
     rdoc (4.1.2)
       json (~> 1.4)
     responders (1.1.1)
@@ -194,12 +198,14 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   omniauth
   omniauth-github
   omniauth-twitter
   pg
   quiet_assets
   rails (= 4.1.7)
+  ranked-model
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

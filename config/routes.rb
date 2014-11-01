@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'top#index'
   get 'top/index'
 
-  resources :tasks
+  resources :tasks do
+    put :sort
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do

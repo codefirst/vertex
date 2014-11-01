@@ -50,6 +50,8 @@ gem "omniauth-github"
 gem "dotenv-rails"
 gem "bootstrap-sass", "~> 3.0.3.0"
 gem "font-awesome-rails"
+gem 'ranked-model'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'sqlite3'

@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.rank(:row_order)
+    #@tasks = Task.all
     respond_with(@tasks)
   end
 
@@ -31,6 +32,12 @@ class TasksController < ApplicationController
     respond_with(@task)
   end
 
+  def sort
+    task = Task.find(params[:task_id])
+    task.update(task_params)
+    render nothing: true
+  end
+
   def destroy
     @task.destroy
     respond_with(@task)
@@ -42,6 +49,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :row_order, :user_id, :done)
+      params.require(:task).permit(:title, :row_order, :user_id, :done, :row_order_position)
     end
 end

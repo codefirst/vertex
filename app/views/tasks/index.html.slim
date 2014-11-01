@@ -2,9 +2,9 @@ h1 Listing tasks
 
 table
 
-  ul.task-list
+  ul.task-list.table-sortable
     - @tasks.each do |task|
-      li
+      li.item(data = { model_name: task.class.name.underscore, update_url: task_sort_path(task) })
         span.task-checkbox= check_box_tag "tasks[#{task.id}]", task.done, task.done
         span.task-title= task.title
         span.task-edit= link_to fa_icon('pencil'), edit_task_path(task)
