@@ -4,8 +4,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.rank(:row_order)
-    #@tasks = Task.all
+    @tasks = current_user.tasks.rank(:row_order)
     respond_with(@tasks)
   end
 
@@ -23,6 +22,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     @task.save
     respond_with(@task)
   end
