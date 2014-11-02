@@ -4,3 +4,9 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+task :notify => :environment do
+  User.all.each do |user|
+    user.notify!
+  end
+end
