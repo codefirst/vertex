@@ -29,7 +29,10 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    respond_with(@task)
+    respond_to do |format|
+      format.html { redirect_to(tasks_path) }
+      format.json { respond_with_bip(@task) }
+    end
   end
 
   def sort
