@@ -58,11 +58,23 @@ $ ->
     spanTag.attr('class', 'task-delete')
     aTag = $('<a>')
     aTag.attr('data-confirm', 'Are you sure?')
-    aTag.attr('data-method', 'delete')
-    aTag.attr('href', '/tasks/' + id)
+    aTag.attr('data-task-id', id)
+    aTag.attr('href', '#')
     aTag.attr('rel', 'nofollow')
     spanTag.append(aTag)
     iTag = $('<i>')
     iTag.attr('class', 'fa fa-trash')
     aTag.append(iTag)
     spanTag
+
+  $(document).on('confirm:complete', '.task-delete > a', (e, answer) ->
+    if answer
+      id = $(e.target).attr('data-task-id')
+      $.ajax({
+        url: '/tasks/' + id + '.json',
+        type: 'DELETE',
+      }).done((data, dataType) ->
+        $(e.target).parent().parent().remove()
+      )
+  )
+

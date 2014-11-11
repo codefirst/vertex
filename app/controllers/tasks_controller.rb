@@ -43,7 +43,10 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    respond_with(@task)
+    respond_to do |format|
+      format.html { redirect_to(tasks_path) }
+      format.json { render json: @task }
+    end
   end
 
   private
