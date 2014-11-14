@@ -40,6 +40,7 @@ group :development, :test do
   gem "rspec-rails"
 end
 
+gem 'thin'
 gem "slim-rails"
 gem "devise"
 gem "omniauth"
