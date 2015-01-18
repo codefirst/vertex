@@ -24,6 +24,10 @@ html
                 a.dropdown-toggle data-toggle='dropdown' role='button' href="#" Account
                 ul.dropdown-menu role='menu'
                   li role='presentation'
+                    = link_to edit_schedule_path do
+                      span.glyphicon.glyphicon-cog
+                      = t(:button_schedule)
+                  li role='presentation'
                     = link_to destroy_user_session_path, method: :delete do
                       span.glyphicon.glyphicon-log-out
                       = t(:button_sign_out)

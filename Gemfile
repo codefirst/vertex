@@ -52,6 +52,8 @@ gem "font-awesome-rails"
 gem 'ranked-model'
 gem 'jquery-ui-rails'
 gem 'best_in_place'
+gem 'chrono_cross', :github => 'mallowlabs/chrono_cross'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3'

@@ -1,0 +1,11 @@
+h3 = t(:schedule_edit_title)
+
+table.table
+  tr
+    th = t(:schedule_edit_cron)
+    td = form_for @schedule, url: schedule_path, method: :put, html: {class: 'form-inline'} do |f|
+      .form-group
+        .input-group
+          = f.label :cron, class: 'sr-only'
+          = f.text_field :cron, class: 'form-control', placeholder: t(:schedule_edit_cron_placeholder)
+      =< f.submit t(:button_save), class: 'btn btn-primary'

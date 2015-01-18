@@ -1,4 +1,11 @@
 en:
   button_sign_in: Sign in
   button_sign_out: Sign out
+  button_save: Save
+  button_schedule: Schedule
   error_authentication_failed: Authentication failed
+
+  schedule_edit_title: Edit Schedule
+  schedule_edit_cron: Cron
+  schedule_edit_cron_placeholder: "e.g. 0 8 * * 1-5"
+  schedule_update_notice: Schedule updated successfully.

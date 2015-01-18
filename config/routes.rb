@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     put :sort
   end
 
+  resource :schedule, only: [:edit, :update]
+
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do
     get 'sign_in', to: 'authentication#login', as: :new_user_session

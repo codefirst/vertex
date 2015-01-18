@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :omniauthable
 
   has_many :tasks
+  has_one :schedule
 
   def notify!
     tasks = Task.where("user_id = ?", self.id)
