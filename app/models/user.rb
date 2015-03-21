@@ -5,11 +5,16 @@ class User < ActiveRecord::Base
   has_one :schedule
 
   def notify!
-    tasks = Task.where("user_id = ?", self.id)
+    tasks = self.tasks.rank(:row_order)
     unless tasks.empty?
       tasks.update_all(done: false)
-      content = Vertex::Taskpaper.new.report(self, self.tasks)
-      Vertex::AsakusaSatellite.new.notify(content)
+      content = Vertex::Taskpaper.new.report(self, tasks)
+      notifier.notify(content)
     end
+  end
+
+  private
+  def notifier
+    Vertex::AsakusaSatellite.new
   end
 end
