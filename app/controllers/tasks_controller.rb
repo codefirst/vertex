@@ -29,6 +29,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
+    current_user.done_notify if current_user.tasks.where(done: false).count == 0
     respond_to do |format|
       format.html { redirect_to(tasks_path) }
       format.json { respond_with_bip(@task) }

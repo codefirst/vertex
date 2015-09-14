@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def done_notify
+    notifier.notify("#{self.name} has finished all tasks on Vertex!")
+  end
+
   private
   def notifier
     Vertex::AsakusaSatellite.new
