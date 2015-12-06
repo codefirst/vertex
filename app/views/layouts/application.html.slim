@@ -28,6 +28,10 @@ html
                       span.glyphicon.glyphicon-cog
                       = t(:button_schedule)
                   li role='presentation'
+                    = link_to token_index_path do
+                      span.glyphicon.glyphicon-font
+                      = t(:button_token)
+                  li role='presentation'
                     = link_to destroy_user_session_path, method: :delete do
                       span.glyphicon.glyphicon-log-out
                       = t(:button_sign_out)

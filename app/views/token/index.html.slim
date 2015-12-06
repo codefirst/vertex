@@ -1,0 +1,7 @@
+h3 = t(:token_index_title)
+
+p = current_user.authentication_token
+
+p
+  span = "Example: "
+  span = link_to "#{tasks_url(format: :json)}?user_nickname=#{current_user.nickname}&user_token=#{current_user.authentication_token}", "#{tasks_url(format: :json)}?user_nickname=#{current_user.nickname}&user_token=#{current_user.authentication_token}"
