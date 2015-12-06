@@ -46,6 +46,7 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-github"
+gem 'simple_token_authentication', '~> 1.0'
 gem "dotenv-rails"
 gem "bootstrap-sass", "~> 3.0.3.0"
 gem "font-awesome-rails"

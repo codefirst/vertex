@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113144939) do
+ActiveRecord::Schema.define(version: 20151206085526) do
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
@@ -35,12 +35,14 @@ ActiveRecord::Schema.define(version: 20150113144939) do
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "nickname",   null: false
-    t.string   "name",       null: false
+    t.string   "nickname",             null: false
+    t.string   "name",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
   add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
 
