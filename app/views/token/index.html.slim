@@ -1,6 +1,12 @@
 h3 = t(:token_index_title)
 
-p = current_user.authentication_token
+p
+  span = "Nick name: "
+  span#nickname = current_user.nickname
+
+p
+  span = "Token: "
+  span#token = current_user.authentication_token
 
 p
   span = "Example: "
