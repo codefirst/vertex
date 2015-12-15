@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206085526) do
+ActiveRecord::Schema.define(version: 20151215145141) do
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151206085526) do
     t.string   "title"
     t.integer  "row_order"
     t.integer  "user_id"
-    t.boolean  "done"
+    t.boolean  "done",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
