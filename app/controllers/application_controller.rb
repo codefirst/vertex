@@ -4,4 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   acts_as_token_authentication_handler_for User, if: lambda { |controller| controller.request.format.json? }
+
+  def verify_authenticity_token
+    super unless has_user_token?
+  end
+
+  private
+  def has_user_token?
+    not params[:user_token].blank?
+  end
 end
