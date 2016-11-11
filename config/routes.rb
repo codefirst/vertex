@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   resource :schedule, only: [:edit, :update]
+  resource :line_access_token, only: [:edit, :update]
 
   devise_for :users, controllers: { omniauth_callbacks: 'authentication' }
   devise_scope :user do

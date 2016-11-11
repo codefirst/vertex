@@ -28,6 +28,10 @@ html
                       span.glyphicon.glyphicon-cog
                       = t(:button_schedule)
                   li role='presentation'
+                    = link_to edit_line_access_token_path do
+                      span.glyphicon.glyphicon-send
+                      = t(:button_line)
+                  li role='presentation'
                     = link_to token_index_path do
                       span.glyphicon.glyphicon-font
                       = t(:button_token)
