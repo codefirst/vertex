@@ -15,6 +15,6 @@ en:
   line_access_token_edit_title: Edit Line Access Token
   line_access_token_edit_token: Token
   line_access_token_edit_token_placeholder: Your access token
-  line_access_token_update_notice: Schedule updated successfully.
+  line_access_token_update_notice: Line Access Token updated successfully.
 
   token_index_title: API Token

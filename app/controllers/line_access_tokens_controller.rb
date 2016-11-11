@@ -8,7 +8,7 @@ class LineAccessTokensController < ApplicationController
 
   def update
     if @line_access_token
-      @line_access_token.update(schedule_params)
+      @line_access_token.update(line_access_token_params)
     else
       LineAccessToken.create(user_id: current_user.id, token: params[:token])
     end
@@ -24,7 +24,7 @@ class LineAccessTokensController < ApplicationController
       @line_access_token = LineAccessToken.where(user_id: current_user.id).first || LineAccessToken.new(user_id: current_user.id)
     end
 
-    def schedule_params
+    def line_access_token_params
       params.require(:line_access_token).permit(:token)
     end
 end
