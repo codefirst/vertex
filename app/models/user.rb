@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
   end
 
   def done_notify
-    notifier.notify("#{self.name} has finished all tasks on Vertex!")
+    notifiers.each do |notifier|
+      notifier.notify("#{self.name} has finished all tasks on Vertex!")
+    end
   end
 
   private
