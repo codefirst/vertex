@@ -1,11 +1,14 @@
-box: wercker/rvm
+box: ruby:2.3
 services:
-  - wercker/postgresql
+  - id: postgres
+    env:
+      POSTGRES_PASSWORD: ourlittlesecret
+      POSTGRES_USER: myuser
 build:
     steps:
         - bundle-install
         - rails-database-yml:
-            service: postgresql
+            service: postgresql-docker
         - script:
             name: echo ruby information
             code: |
@@ -13,15 +16,17 @@ build:
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
         - script:
+            name: db:migrate
+            code: RAILS_ENV=test bundle exec rake db:migrate
+        - script:
             name: rspec
-            code: bundle exec rake spec
+            code: RAILS_ENV=test bundle exec rake spec
     after-steps:
         - mzp/http-notify:
             url: $DASHBOZU_URL
 deploy:
-    steps:
-        - heroku-deploy:
-            install-toolbelt: true
-        - script:
-            name: Update database
-            code: heroku run rake db:migrate --app $APP_NAME
+  steps:
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
