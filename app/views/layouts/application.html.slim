@@ -24,13 +24,9 @@ html
                 a.dropdown-toggle data-toggle='dropdown' role='button' href="#" Account
                 ul.dropdown-menu role='menu'
                   li role='presentation'
-                    = link_to edit_schedule_path do
-                      span.glyphicon.glyphicon-cog
-                      = t(:button_schedule)
-                  li role='presentation'
-                    = link_to edit_line_access_token_path do
+                    = link_to edit_notification_path do
                       span.glyphicon.glyphicon-send
-                      = t(:button_line)
+                      = t(:button_notification)
                   li role='presentation'
                     = link_to token_index_path do
                       span.glyphicon.glyphicon-font

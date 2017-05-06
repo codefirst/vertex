@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161111151655) do
+ActiveRecord::Schema.define(version: 20170408133526) do
 
   create_table "line_access_tokens", force: true do |t|
     t.integer  "user_id"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "kind"
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"

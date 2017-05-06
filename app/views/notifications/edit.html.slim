@@ -1,0 +1,19 @@
+h1= t(:edit_notifications)
+
+= form_tag :notification, method: :put do
+  .form-group
+    label= t(:notifications_form_label_schedule)
+    = text_field_tag :notifications_scheudle, @schedule.cron, class: 'form-control', placeholder: t(:schedule_edit_cron_placeholder)
+  .form-group
+    label= t(:notifications_form_label_type)
+    .radio
+      label
+        = radio_button_tag :notifications_type, :asakusa_satellite, @notification.is_asakusa_satellite?
+        = t(:notifications_form_radio_label_asakusa_satellite)
+    .radio
+      label
+        = radio_button_tag :notifications_type, :line, @notification.is_line?
+        = t(:notifications_form_radio_label_line)
+    div= text_field_tag :notifications_line_token, @notification.token, class: 'form-control', placeholder: 'Line Access Token'
+  .form-group
+    = submit_tag t(:button_save), class: 'btn btn-primary'

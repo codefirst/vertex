@@ -5,29 +5,27 @@ class User < ActiveRecord::Base
 
   has_many :tasks
   has_one :schedule
-  has_one :line_access_token
+  has_one :notification
 
   def notify!
     tasks = self.tasks.rank(:row_order)
     unless tasks.empty?
       tasks.update_all(done: false)
       content = Vertex::Taskpaper.new.report(self, tasks)
-      notifiers.each do |notifier|
-        notifier.notify(content)
-      end
+      notifier.notify(content)
     end
   end
 
   def done_notify
-    notifiers.each do |notifier|
-      notifier.notify("#{self.name} has finished all tasks on Vertex!")
-    end
+    notifier.notify("#{self.name} has finished all tasks on Vertex!")
   end
 
   private
-  def notifiers
-    clients = [Vertex::AsakusaSatellite.new]
-    clients << Vertex::Line.new(line_access_token.token) if line_access_token
-    clients
+  def notifier
+    if notification and notification.is_line?
+      Vertex::Line.new(notification.token)
+    else
+      Vertex::AsakusaSatellite.new
+    end
   end
 end

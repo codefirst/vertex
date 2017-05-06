@@ -3,7 +3,7 @@ en:
   button_sign_out: Sign out
   button_save: Save
   button_schedule: Schedule
-  button_line: Line
+  button_notification: Notification
   button_token: API Token
   error_authentication_failed: Authentication failed
 
@@ -12,9 +12,11 @@ en:
   schedule_edit_cron_placeholder: "e.g. 0 8 * * 1-5"
   schedule_update_notice: Schedule updated successfully.
 
-  line_access_token_edit_title: Edit Line Access Token
-  line_access_token_edit_token: Token
-  line_access_token_edit_token_placeholder: Your access token
-  line_access_token_update_notice: Line Access Token updated successfully.
+  notifications_edit_title: Edit Notifications
+  notifications_form_label_schedule: Schedule
+  notifications_form_label_type: Type
+  notifications_form_radio_label_asakusa_satellite: AsakusaSatellite
+  notifications_form_radio_label_line: Line
+  notifications_update_notice: Notification settings updated successfully.
 
   token_index_title: API Token
