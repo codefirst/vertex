@@ -2,19 +2,19 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.15'
+gem 'rails', '5.2.2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+#gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -54,11 +54,11 @@ gem 'ranked-model'
 gem 'jquery-ui-rails'
 gem 'best_in_place'
 gem 'chrono_cross', :github => 'mallowlabs/chrono_cross'
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'quiet_assets'
+  gem 'sqlite3', '~> 1.3.6'
+  #gem 'quiet_assets'
 end
 
 group :production do
