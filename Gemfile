@@ -14,7 +14,7 @@ gem 'coffee-rails'
 gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-#gem 'jquery-rails'
+gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -55,10 +55,12 @@ gem 'jquery-ui-rails'
 gem 'best_in_place'
 gem 'chrono_cross', :github => 'mallowlabs/chrono_cross'
 #gem 'newrelic_rpm'
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
   #gem 'quiet_assets'
+  gem 'listen'
 end
 
 group :production do

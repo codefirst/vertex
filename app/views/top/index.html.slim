@@ -3,7 +3,7 @@
     .text-center
       h1 Vertex
       h2 A service to support weekly review
-      = form_tag user_omniauth_authorize_path(DotenvConfig.omniauth_provider), :method => 'post' do |f|
+      = form_tag user_omniauth_authorize_path, :method => 'post' do |f|
         button.btn.btn-primary.btn-large
           span.glyphicon.glyphicon-log-in
           = t(:button_sign_in)

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,47 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506062635) do
+ActiveRecord::Schema.define(version: 2017_05_06_062635) do
 
-  create_table "notifications", force: true do |t|
-    t.integer  "user_id"
-    t.string   "kind"
-    t.string   "token"
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "kind", limit: 255
+    t.string "token", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "schedules", force: true do |t|
-    t.integer  "user_id"
-    t.string   "cron"
+  create_table "schedules", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "cron", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
-  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
-
-  create_table "tasks", force: true do |t|
-    t.string   "title"
-    t.integer  "row_order"
-    t.integer  "user_id"
-    t.boolean  "done",       default: false
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", limit: 255
+    t.integer "row_order"
+    t.integer "user_id"
+    t.boolean "done", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["row_order"], name: "index_tasks_on_row_order"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  add_index "tasks", ["row_order"], name: "index_tasks_on_row_order"
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
-
-  create_table "users", force: true do |t|
-    t.string   "nickname",             null: false
-    t.string   "name",                 null: false
+  create_table "users", force: :cascade do |t|
+    t.string "nickname", limit: 255, null: false
+    t.string "name", limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "authentication_token"
+    t.string "authentication_token", limit: 255
+    t.index ["authentication_token"], name: "index_users_on_authentication_token"
+    t.index ["name"], name: "index_users_on_name"
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
-
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
-  add_index "users", ["name"], name: "index_users_on_name"
-  add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
 
 end
