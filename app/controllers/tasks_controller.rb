@@ -41,7 +41,7 @@ class TasksController < ApplicationController
     result = task.update(task_params)
     if result
       render json: {success: result}
-    begin
+    else
       render json: {success: result}, status: 500
     end
   end
