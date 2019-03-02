@@ -62,6 +62,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
   #gem 'quiet_assets'
   gem 'listen'
+  gem 'rb-readline'
 end
 
 group :production do
