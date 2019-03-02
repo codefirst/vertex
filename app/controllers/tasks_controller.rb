@@ -38,8 +38,12 @@ class TasksController < ApplicationController
 
   def sort
     task = Task.find(params[:task_id])
-    task.update(task_params)
-    render nothing: true
+    result = task.update(task_params)
+    if result
+      render json: {success: result}
+    begin
+      render json: {success: result}, status: 500
+    end
   end
 
   def destroy
