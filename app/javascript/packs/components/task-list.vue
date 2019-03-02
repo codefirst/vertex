@@ -1,7 +1,7 @@
 <template lang="pug">
 .task-list
-  ul.task-list.table-sortable
-    li.item(v-for='task in tasks' :key='task.id')
+  draggable.task-list.table-sortable(element='ul' v-model='tasks' @end='onSortEnd')
+    li.item(v-for='task in tasks' :key='task.id' data-task-id="task.id")
       span.task-done
         input(type='checkbox' @change='toggleDone(task)' v-model='task.done')
       span.task-title
@@ -19,13 +19,18 @@
 
 <script>
 import axios from 'axios'
+import Draggable from 'vuedraggable'
 
 export default {
   name: 'TaskList',
 
+  components: {
+    Draggable
+  },
+
   data() {
     return {
-      tasks: { type: Array, default: [] }
+      tasks: []
     }
   },
 
@@ -46,14 +51,12 @@ export default {
     },
 
     deleteTask(task) {
-      axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName("csrf-token")[0].getAttribute('content');
       axios.delete(`/tasks/${task.id}.json`).then(response => {
         this.tasks = this.tasks.filter(t => t.id !== task.id);
       });
     },
 
     addTask() {
-      axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName("csrf-token")[0].getAttribute('content');
       axios.post('/tasks.json', { task: { title: 'New Task' } }).then(response => {
         this.tasks.push(response.data);
       });
@@ -66,7 +69,6 @@ export default {
         if (task.isEdit) {
           this.$refs['title_' + task.id][0].focus();
         } else {
-          axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName("csrf-token")[0].getAttribute('content');
           axios.put(`/tasks/${task.id}.json`, { task: { title: task.title } });
         }
       });
@@ -74,6 +76,10 @@ export default {
 
     isEdit(task) {
       return task.isEdit;
+    },
+
+    onSortEnd(originalEvent) {
+      axios.put(`/tasks/${this.tasks[originalEvent.newIndex].id}/sort`, { task: { row_order_position: originalEvent.newIndex } });
     }
   }
 }
