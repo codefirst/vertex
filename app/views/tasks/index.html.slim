@@ -1,7 +1,8 @@
 h1 Listing tasks
 
+#app
+  task-list
 table
-
   ul.task-list.table-sortable
     - @tasks.each do |task|
       li.item(data = { model_name: task.class.name.underscore, update_url: task_sort_path(task) })
@@ -12,3 +13,6 @@ table
 br
 
 = link_to 'New Task', '#', class: 'new-task'
+
+
+= javascript_pack_tag 'pages/tasks/index'

@@ -4,14 +4,6 @@
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
 $(function() {
-  $(document).on('change', '.task-checkbox', function(e) {
-    return $.ajax({
-      url: `/tasks/${this.value}.json`,
-      type: 'PUT',
-      data: {"task": {"done": this.checked}}
-    });
-  });
-
   $('.new-task').on('click', e =>
     $.ajax({
       url: '/tasks.json',
@@ -73,15 +65,5 @@ $(function() {
     aTag.append(iTag);
     return spanTag;
   };
-
-  return $(document).on('confirm:complete', '.task-delete > a', function(e, answer) {
-    if (answer) {
-      const id = $(e.target).attr('data-task-id');
-      return $.ajax({
-        url: `/tasks/${id}.json`,
-        type: 'DELETE',
-      }).done((data, dataType) => $(e.target).parent().parent().remove());
-    }
-  });
 });
 
