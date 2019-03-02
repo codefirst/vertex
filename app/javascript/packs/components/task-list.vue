@@ -84,3 +84,26 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.task-list {
+  list-style-type: none;
+  padding-left: 0px;
+
+  .task-done {
+    padding-left: 0px;
+  }
+  .task-title {
+    padding-left: 4px;
+  }
+  .task-delete {
+    padding-left: 8px;
+  }
+}
+
+.table-sortable {
+  li.item {
+    cursor: row-resize;
+  }
+}
+</style>
