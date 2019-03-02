@@ -58,7 +58,9 @@ export default {
 
     addTask() {
       axios.post('/tasks.json', { task: { title: 'New Task' } }).then(response => {
-        this.tasks.push(response.data);
+        var task = response.data;
+        task.isEdit = false;
+        this.tasks.push(task);
       });
     },
 
