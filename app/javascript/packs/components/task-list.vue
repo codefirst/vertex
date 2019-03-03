@@ -34,14 +34,16 @@ export default {
     }
   },
 
-  mounted() {
+  beforeMount() {
     axios.get('/tasks.json').then((response) => {
       this.tasks = response.data.map(task => {
         task.isEdit = false;
         return task;
       });
     });
+  },
 
+  mounted() {
     axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName("csrf-token")[0].getAttribute('content');
   },
 
