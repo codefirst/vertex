@@ -107,5 +107,8 @@ export default {
   li.item {
     cursor: row-resize;
   }
+  li.item.sortable-ghost {
+    visibility: hidden;
+  }
 }
 </style>
