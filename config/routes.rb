@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :tasks do
     put :sort
   end
+  post 'tasks/reset-notification', to: 'tasks#reset_notification'
 
   resource :schedule, only: [:edit, :update]
   resource :notification, only: [:edit, :update]

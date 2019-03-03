@@ -54,6 +54,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def reset_notification
+    current_user.notify!
+    render json: { success: true }
+  rescue => e
+    render json: { success: false, backtrace: e.backtrace.join("\n") }
+  end
+
   private
     def set_task
       @task = Task.find(params[:id])
