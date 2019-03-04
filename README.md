@@ -40,6 +40,14 @@ See [config/initializers/devise.rb](https://github.com/codefirst/vertex/blob/mas
     $ bundle exec rake db:migrate
     $ bundle exec rails s
 
+### Task
+
+notify for all users by command
+
+```
+$ bundle exec thor notification:notify
+```
+
 License
 -------------------------------
 [The MIT License (MIT)](http://opensource.org/licenses/mit-license)
