@@ -45,7 +45,15 @@ See [config/initializers/devise.rb](https://github.com/codefirst/vertex/blob/mas
 notify for all users by command
 
 ```
+# notify immediately
 $ bundle exec thor notification:notify
+# per user
+$ bundle exec thor notification:notify nickname
+
+# notify by user's schedule setting
+$ bundle exec thor notification:cron_notify
+# per user
+$ bundle exec thor notification:cron_notify nickname
 ```
 
 License
