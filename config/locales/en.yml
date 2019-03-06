@@ -15,7 +15,6 @@ en:
   notifications_edit_title: Edit Notifications
   notifications_form_label_schedule: Schedule
   notifications_form_label_type: Type
-  notifications_form_radio_label_asakusa_satellite: AsakusaSatellite
   notifications_form_radio_label_line: Line
   notifications_update_notice: Notification settings updated successfully.
 

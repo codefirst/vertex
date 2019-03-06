@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
   context 'notify' do
     it {
-      mock_notifier = double(Vertex::AsakusaSatellite)
+      mock_notifier = double(Vertex::Line)
       message = "taskpaper::\ntest user:\n - task3\n - task2\n - task1\n"
       allow(mock_notifier).to receive(:notify).with(message)
       user = User.create(nickname: 'testuser', name: 'test user')

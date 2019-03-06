@@ -24,8 +24,6 @@ class User < ActiveRecord::Base
   def notifier
     if notification and notification.is_line?
       Vertex::Line.new(notification.token)
-    else
-      Vertex::AsakusaSatellite.new
     end
   end
 end
