@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     tasks = self.tasks.rank(:row_order)
     unless tasks.empty?
       tasks.update_all(done: false)
-      content = Vertex::Taskpaper.new.report(self, tasks)
+      content = "\n" + tasks.map {|task| " - #{task.title}"}.join("\n")
       notifier.notify(content)
     end
   end

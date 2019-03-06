@@ -4,7 +4,7 @@ RSpec.describe User, :type => :model do
   context 'notify' do
     it {
       mock_notifier = double(Vertex::Line)
-      message = "taskpaper::\ntest user:\n - task3\n - task2\n - task1\n"
+      message = " - task3\n - task2\n - task1"
       allow(mock_notifier).to receive(:notify).with(message)
       user = User.create(nickname: 'testuser', name: 'test user')
       allow(user).to receive(:notifier).and_return(mock_notifier)
