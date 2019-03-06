@@ -29,6 +29,7 @@ module Vertex
 
     # to auto load lib/ directory
     config.autoload_paths += %W(#{config.root}/lib)
+    config.enable_dependency_loading = true
 
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
