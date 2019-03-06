@@ -1,3 +1,3 @@
-require 'vertext/taskpaper'
-require 'vertext/asakusa_satellite'
+require 'vertex/taskpaper'
+require 'vertex/asakusa_satellite'
 
