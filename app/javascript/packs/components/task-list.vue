@@ -1,17 +1,7 @@
 <template lang="pug">
 .task-list
-  draggable.task-list.table-sortable(element='ul' v-model='tasks' @end='onSortEnd')
-    li.item(v-for='task in tasks' :key='task.id' data-task-id="task.id")
-      span.task-done
-        input(type='checkbox' @change='toggleDone(task)' v-model='task.done')
-      span.task-title
-        template(v-if='isEdit(task)')
-          input(type='text' v-model='task.title' @blur='toggleEdit(task)' :ref='`title_${task.id}`')
-        template(v-else)
-          span(@click='toggleEdit(task)')
-            | {{task.title}}
-      span.task-delete(@click='deleteTask(task)')
-        a.fa.fa-trash
+  draggable.table-sortable(element='ul' v-model='tasks' @end='onSortEnd')
+    task(v-for='task in tasks' :key='task.id' :task='task' @deleted='deleted')
   a.new-task(href='#' @click='addTask')
     | New Task
 
@@ -20,12 +10,14 @@
 <script>
 import axios from 'axios'
 import Draggable from 'vuedraggable'
+import Task from './task'
 
 export default {
   name: 'TaskList',
 
   components: {
-    Draggable
+    Draggable,
+    Task
   },
 
   data() {
@@ -36,10 +28,7 @@ export default {
 
   beforeMount() {
     axios.get('/tasks.json').then((response) => {
-      this.tasks = response.data.map(task => {
-        task.isEdit = false;
-        return task;
-      });
+      this.tasks = response.data;
     });
   },
 
@@ -48,38 +37,15 @@ export default {
   },
 
   methods: {
-    toggleDone(task) {
-      axios.put(`/tasks/${task.id}.json`, { task: { done: task.done } });
-    },
-
-    deleteTask(task) {
-      axios.delete(`/tasks/${task.id}.json`).then(response => {
-        this.tasks = this.tasks.filter(t => t.id !== task.id);
-      });
-    },
-
     addTask() {
       axios.post('/tasks.json', { task: { title: 'New Task' } }).then(response => {
         var task = response.data;
-        task.isEdit = false;
         this.tasks.push(task);
       });
     },
 
-    toggleEdit(task) {
-      task.isEdit = !task.isEdit;
-
-      this.$nextTick(() => {
-        if (task.isEdit) {
-          this.$refs['title_' + task.id][0].focus();
-        } else {
-          axios.put(`/tasks/${task.id}.json`, { task: { title: task.title } });
-        }
-      });
-    },
-
-    isEdit(task) {
-      return task.isEdit;
+    deleted(task) {
+      this.tasks = this.tasks.filter(t => t.id !== task.id);
     },
 
     onSortEnd(originalEvent) {
@@ -90,27 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.task-list {
+.table-sortable {
   list-style-type: none;
   padding-left: 0px;
-
-  .task-done {
-    padding-left: 0px;
-  }
-  .task-title {
-    padding-left: 4px;
-  }
-  .task-delete {
-    padding-left: 8px;
-  }
-}
-
-.table-sortable {
-  li.item {
-    cursor: row-resize;
-  }
-  li.item.sortable-ghost {
-    visibility: hidden;
-  }
 }
 </style>
