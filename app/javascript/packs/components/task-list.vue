@@ -10,7 +10,7 @@
 <script>
 import axios from 'axios'
 import Draggable from 'vuedraggable'
-import Task from './task'
+import Task from './task.vue'
 
 export default {
   name: 'TaskList',
