@@ -48,7 +48,7 @@ gem "omniauth-twitter"
 gem "omniauth-github"
 gem 'simple_token_authentication', '~> 1.0'
 gem "dotenv-rails"
-gem "bootstrap-sass", "~> 3.0.3.0"
+gem "bootstrap-sass", "3.4.1"
 gem "font-awesome-rails"
 gem 'ranked-model'
 gem 'jquery-ui-rails'
