@@ -35,7 +35,7 @@ See [config/initializers/devise.rb](https://github.com/codefirst/vertex/blob/mas
 
 #### run
 
-    $ ./bin/webpack # or ./bin/webpack-dev-server for developers
+    $ yarn build # or yarn dev for developers
     $ bundle install --path .bundle
     $ bundle exec rake db:migrate
     $ bundle exec rails s

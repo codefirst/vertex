@@ -63,5 +63,10 @@ module.exports = (env, argv) => {
       new ManifestPlugin(),
       new MiniCssExtractPlugin({filename: '[name]-[contentHash].css'}),
     ],
+    devServer: {
+      publicPath: '/packs/',
+      historyApiFallback: true,
+      port: 3035,
+    },
   };
 }
