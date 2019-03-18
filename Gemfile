@@ -56,7 +56,6 @@ gem 'best_in_place'
 gem 'chrono_cross', :github => 'mallowlabs/chrono_cross'
 #gem 'newrelic_rpm'
 gem 'bootsnap', require: false
-gem 'webpacker'
 
 group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
