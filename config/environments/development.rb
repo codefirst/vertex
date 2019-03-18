@@ -1,3 +1,4 @@
+require_relative '../../lib/tasks/assets_path_proxy'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -12,6 +13,8 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
+
+  config.middleware.use AssetsPathProxy, ssl_verify_none: true
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

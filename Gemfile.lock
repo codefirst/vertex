@@ -158,6 +158,8 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.4)
     rack (2.0.6)
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2.1)
@@ -293,6 +295,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-twitter
   pg
+  rack-proxy
   rails (= 5.2.2.1)
   ranked-model
   rb-readline
