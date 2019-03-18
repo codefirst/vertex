@@ -30,8 +30,8 @@ module WebpackBundleHelper
   private
 
     def asset_server
-      port = Rails.env === 'production' ? '3000' : '3035'
-      "http://#{request.host}:#{port}/"
+      return '/' if Rails.env === 'production'
+      "http://#{request.host}:3035/"
     end
 
     def pro_manifest
