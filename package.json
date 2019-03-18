@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "webpack-dev-server --mode development --env.devServer",
-    "build": "yarn && webpack --mode=production"
+    "build": "yarn && webpack --mode=production",
+    "start": "echo start"
   },
   "dependencies": {
     "axios": "^0.18.0",
