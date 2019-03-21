@@ -1,6 +1,6 @@
 <template lang="pug">
 .task-list
-  draggable.table-sortable(element='ul' v-model='tasks' @end='onSortEnd')
+  draggable.table-sortable(tag='ul' v-model='tasks' @end='onSortEnd')
     task(v-for='task in tasks' :key='task.id' :task='task' @deleted='deleted')
   a.new-task(href='#' @click='addTask')
     | New Task
