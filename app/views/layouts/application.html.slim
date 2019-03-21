@@ -25,15 +25,15 @@ html
                 ul.dropdown-menu role='menu'
                   li role='presentation'
                     = link_to edit_notification_path do
-                      span.glyphicon.glyphicon-send
+                      i.fa.fa-send
                       = t(:button_notification)
                   li role='presentation'
                     = link_to token_index_path do
-                      span.glyphicon.glyphicon-font
+                      span.fa.fa-font
                       = t(:button_token)
                   li role='presentation'
                     = link_to destroy_user_session_path, method: :delete do
-                      span.glyphicon.glyphicon-log-out
+                      span.fa.fa-sign-out
                       = t(:button_sign_out)
 
     .container
