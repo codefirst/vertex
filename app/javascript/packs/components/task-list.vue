@@ -7,50 +7,41 @@
 
 </template>
 
-<script>
+<script lang='ts'>
+import {Vue, Component, Prop} from 'vue-property-decorator'
 import axios from 'axios'
 import Draggable from 'vuedraggable'
 import Task from './task.vue'
 
-export default {
-  name: 'TaskList',
-
-  components: {
-    Draggable,
-    Task
-  },
-
-  data() {
-    return {
-      tasks: []
-    }
-  },
+@Component({
+  components: {Draggable, Task}
+})
+export default class TaskList extends Vue {
+  tasks: any[] = []
 
   beforeMount() {
     axios.get('/tasks.json').then((response) => {
       this.tasks = response.data;
     });
-  },
+  }
 
   mounted() {
     axios.defaults.headers.common['X-CSRF-TOKEN'] = document.getElementsByName("csrf-token")[0].getAttribute('content');
-  },
+  }
 
-  methods: {
-    addTask() {
-      axios.post('/tasks.json', { task: { title: 'New Task' } }).then(response => {
-        var task = response.data;
-        this.tasks.push(task);
-      });
-    },
+  addTask() {
+    axios.post('/tasks.json', { task: { title: 'New Task' } }).then(response => {
+      var task = response.data;
+      this.tasks.push(task);
+    });
+  }
 
-    deleted(task) {
-      this.tasks = this.tasks.filter(t => t.id !== task.id);
-    },
+  deleted(task) {
+    this.tasks = this.tasks.filter(t => t.id !== task.id);
+  }
 
-    onSortEnd(originalEvent) {
-      axios.put(`/tasks/${this.tasks[originalEvent.newIndex].id}/sort`, { task: { row_order_position: originalEvent.newIndex } });
-    }
+  onSortEnd(originalEvent) {
+    axios.put(`/tasks/${this.tasks[originalEvent.newIndex].id}/sort`, { task: { row_order_position: originalEvent.newIndex } });
   }
 }
 </script>

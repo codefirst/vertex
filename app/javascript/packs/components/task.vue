@@ -10,44 +10,36 @@ li.item(data-task-id="task.id")
     a.fa.fa-trash
 </template>
 
-<script>
+<script lang='ts'>
+import {Vue, Component, Prop} from 'vue-property-decorator'
 import axios from 'axios'
 
-export default {
-  name: 'Task',
+@Component
+export default class Task extends Vue {
+  @Prop({ default: () => ({}) })  readonly task!: any
 
-  props: {
-    task: { type: Object }
-  },
+  isEdit: boolean = false;
 
-  data() {
-    return {
-      isEdit: false
-    }
-  },
+  toggleDone() {
+    axios.put(`/tasks/${this.task.id}.json`, { task: { done: this.task.done } });
+  }
 
-  methods: {
-    toggleDone() {
-      axios.put(`/tasks/${this.task.id}.json`, { task: { done: this.task.done } });
-    },
+  deleteTask() {
+    axios.delete(`/tasks/${this.task.id}.json`).then(response => {
+      this.$emit('deleted', this.task);
+    });
+  }
 
-    deleteTask() {
-      axios.delete(`/tasks/${this.task.id}.json`).then(response => {
-        this.$emit('deleted', this.task);
-      });
-    },
+  toggleEdit(task) {
+    this.isEdit = !this.isEdit;
 
-    toggleEdit(task) {
-      this.isEdit = !this.isEdit;
-
-      this.$nextTick(() => {
-        if (this.isEdit) {
-          this.$refs.input.focus();
-        } else {
-          axios.put(`/tasks/${task.id}.json`, { task: { title: task.title } });
-        }
-      });
-    },
+    this.$nextTick(() => {
+      if (this.isEdit) {
+        (this.$refs.input as HTMLElement).focus();
+      } else {
+        axios.put(`/tasks/${task.id}.json`, { task: { title: task.title } });
+      }
+    });
   }
 }
 </script>

@@ -45,6 +45,16 @@ module.exports = (env, argv) => {
           },
         },
         {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: { appendTsSuffixTo: [/\.vue$/] }
+            }
+          ]
+        },
+        {
           test: /\.(pug)$/i,
           oneOf: [
             {
