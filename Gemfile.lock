@@ -53,9 +53,6 @@ GEM
     autoprefixer-rails (9.5.0)
       execjs
     bcrypt (3.1.12)
-    best_in_place (3.1.1)
-      actionpack (>= 3.2)
-      railties (>= 3.2)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
@@ -279,7 +276,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  best_in_place
   bootsnap
   bootstrap-sass (= 3.4.1)
   chrono_cross!
