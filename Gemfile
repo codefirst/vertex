@@ -25,7 +25,7 @@ gem "dotenv-rails"
 gem "bootstrap-sass", "3.4.1"
 gem "font-awesome-rails"
 gem 'ranked-model'
-gem 'chrono_cross', :github => 'mallowlabs/chrono_cross'
+gem 'chrono', '0.4.0'
 gem 'bootsnap', require: false
 
 group :development, :test do
