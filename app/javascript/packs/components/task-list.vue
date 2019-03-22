@@ -17,7 +17,7 @@ import Task from './task.vue'
   components: {Draggable, Task}
 })
 export default class TaskList extends Vue {
-  tasks: any[] = []
+  tasks: TaskData[] = []
 
   beforeMount() {
     axios.get('/tasks.json').then((response) => {
@@ -37,6 +37,7 @@ export default class TaskList extends Vue {
   }
 
   deleted(task) {
+    console.log(task);
     this.tasks = this.tasks.filter(t => t.id !== task.id);
   }
 

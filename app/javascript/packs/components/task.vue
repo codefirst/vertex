@@ -11,12 +11,12 @@ li.item(data-task-id="task.id")
 </template>
 
 <script lang='ts'>
-import {Vue, Component, Prop} from 'vue-property-decorator'
+import {Vue, Component, Prop, Emit} from 'vue-property-decorator'
 import axios from 'axios'
 
 @Component
 export default class Task extends Vue {
-  @Prop({ default: () => ({}) })  readonly task!: any
+  @Prop({ default: () => ({}) })  readonly task!: TaskData
 
   isEdit: boolean = false;
 
@@ -24,13 +24,18 @@ export default class Task extends Vue {
     axios.put(`/tasks/${this.task.id}.json`, { task: { done: this.task.done } });
   }
 
+  @Emit('deleted')
+  emitDeleted() {
+    return this.task;
+  }
+
   deleteTask() {
     axios.delete(`/tasks/${this.task.id}.json`).then(response => {
-      this.$emit('deleted', this.task);
+      this.emitDeleted();
     });
   }
 
-  toggleEdit(task) {
+  toggleEdit(task: TaskData) {
     this.isEdit = !this.isEdit;
 
     this.$nextTick(() => {
