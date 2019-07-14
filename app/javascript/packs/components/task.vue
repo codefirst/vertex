@@ -3,7 +3,7 @@ li.item(data-task-id="task.id")
   span.task-done
     input(type='checkbox' @change='toggleDone' v-model='task.done')
   span.task-title
-    input(v-if='isEdit' type='text' v-model='task.title' @blur='toggleEdit(task)' ref='input')
+    input(v-if='isEdit' type='text' v-model='task.title' @keyup.enter='keyupEnter' @blur='toggleEdit(task)' ref='input')
     span(v-else @click='toggleEdit(task)')
       | {{task.title}}
   span.task-delete(@click='deleteTask(task)')
@@ -45,6 +45,10 @@ export default class Task extends Vue {
         axios.put(`/tasks/${task.id}.json`, { task: { title: task.title } });
       }
     });
+  }
+
+  keyupEnter() {
+    (this.$refs.input as HTMLElement).blur();
   }
 }
 </script>
