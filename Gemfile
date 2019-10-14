@@ -16,7 +16,7 @@ end
 
 gem 'thin'
 gem "slim-rails"
-gem "devise"
+gem "devise", '4.7.1'
 gem "omniauth"
 gem "omniauth-twitter"
 gem "omniauth-github"
